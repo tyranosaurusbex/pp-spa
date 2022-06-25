@@ -8,6 +8,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HeaderComponent {
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor() {}
 
 }

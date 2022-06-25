@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3em;
+}
+.wrapper {
+    margin: 3em;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+mat-form-field, .mat-form-field {
+    width: 100%;
+}
