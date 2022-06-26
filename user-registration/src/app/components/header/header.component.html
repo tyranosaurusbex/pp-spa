@@ -1,0 +1,14 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span routerLink="/" routerLinkActive="active" class="title">
+        <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+      </span>
+      <span class="nav-item"><a routerLink="/users" routerLinkActive="active" ariaCurrentWhenActive="page">Users</a></span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

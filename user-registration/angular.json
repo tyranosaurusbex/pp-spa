@@ -68,6 +68,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "user-registration:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "user-registration:build:production"

@@ -1,0 +1,20 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-item {
+  margin-left: 1.75em;
+}
+.nav-item > a {
+  color: white;
+}
+.mat-icon {
+  width: 30px;
+  font-size: 30px;
+}
