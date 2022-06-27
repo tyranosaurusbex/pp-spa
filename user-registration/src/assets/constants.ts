@@ -1,1 +1,1 @@
-export const COUNTRIES = [{name: 'Ireland'}, {name: 'United Kingdom'}, {name: 'United States'}];
+export const COUNTRIES = [{name: 'Earthsea'}, {name: 'Middle-Earth'}, {name: 'Narnia'}, {name: 'The Land of Oz'}, {name: 'Westeros'}];

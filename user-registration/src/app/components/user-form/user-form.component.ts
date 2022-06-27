@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { FormControl, Validators, FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 import { COUNTRIES } from 'src/assets/constants';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-form',
@@ -11,53 +12,28 @@ import { User } from 'src/app/models/user';
 })
 export class UserFormComponent implements OnInit {
   countries = COUNTRIES;
+  @ViewChild(FormGroupDirective) formGroupDirective!: FormGroupDirective;
+
   form = this.fb.group({ 
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
-    // dobDay: new FormControl('', [Validators.required]),
-    // dobMonth: new FormControl('', [Validators.required]),
-    // dobYear: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    dateOfBirth: new FormControl('' as unknown as Date, [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     company: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
     state: new FormControl(false, [Validators.required])
-
   });
   
-  constructor(private fb: FormBuilder,
-    private userService: UserService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-
-    console.log(this.form.valid);
   }
 
-  registerNewUser() {
-    const user = this.mapFormToModel();
-    this.userService.createUser(user).subscribe((user: User) => {
-      console.log('created', user);
-    });
-  }
-
-  mapFormToModel(): User {
-    const user: User = {
-      firstName: this.form.get('firstname')?.value as string,
-      lastName: this.form.get('lastname')?.value as string,
-      dateOfBirth: new Date(),
-      company: this.form.get('company')?.value as string,
-      email: this.form.get('email')?.value as string,
-      country: this.form.get('country')?.value as string,
-      state: this.form.get('state')?.value as boolean
-    };
-    return user;
-  }
-
+  /**
+   * Return custom error for email format
+   */
   getErrorMessage() {
-    if (this.form.get('email')?.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.form.get('email')?.hasError('email') ? 'Not a valid email' : '';
+    return this.form.get('email')?.hasError('pattern') ? 'Please enter valid email format' : '';
   }
 
 }

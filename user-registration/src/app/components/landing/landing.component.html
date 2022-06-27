@@ -1,2 +1,7 @@
-
-<app-user-form></app-user-form>
+<div class="wrapper">
+    <mat-card>
+        <h1 class="center">Register new user</h1>
+        <app-user-form></app-user-form>
+        <button class="center" mat-flat-button color="primary" [disabled]="userFormComponent?.form?.invalid" (click)="registerNewUser()">Register new user</button>
+    </mat-card>
+</div>

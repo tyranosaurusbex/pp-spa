@@ -15,11 +15,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
+import { UserFormDialogComponent } from './components/user-form-dialog/user-form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     UserFormComponent,
     LandingComponent,
-    UserListComponent
+    UserListComponent,
+    UserFormDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +53,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatCheckboxModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [],
+  entryComponents: [UserFormDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

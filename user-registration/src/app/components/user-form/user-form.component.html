@@ -1,45 +1,43 @@
-<div class="wrapper">
-    <mat-card>
-        <form class="flex" [formGroup]="form">
-            <h1>Register new user</h1>
-            <div class="form">
+<form class="flex" [formGroup]="form">
+    <div class="form">
 
-                <div class="flex-row">
-                    <mat-form-field class="margin-right--75" appearance="outline">
-                        <mat-label>First name</mat-label>
-                        <input formControlName="firstname" matInput>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Last name</mat-label>
-                        <input formControlName="lastname" matInput>
-                    </mat-form-field>    
-                </div>
-                <!-- DOB component -->
-            
-            
-                <mat-form-field appearance="outline">
-                    <mat-label>Company name</mat-label>
-                    <input formControlName="company" matInput required>
-                </mat-form-field>
-            
-            
-                <mat-form-field appearance="outline">
-                    <mat-label>Email address</mat-label>
-                    <input matInput placeholder="pat@example.com" formControlName="email" required>
-                    <mat-error *ngIf="form.get('email')?.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-            
-                <mat-form-field appearance="outline">
-                    <mat-label>Country</mat-label>
-                    <mat-select formControlName="country" required>
-                        <mat-option *ngFor="let country of countries" [value]="country?.name">{{country?.name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-checkbox formGroupName="state">Include state</mat-checkbox>
-            </div>
-            <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="registerNewUser()">Register new user</button>
-        </form>
-
+        <div class="flex-row">
+            <mat-form-field class="margin-right--75" appearance="outline">
+                <mat-label>First name</mat-label>
+                <input formControlName="firstname" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last name</mat-label>
+                <input formControlName="lastname" matInput>
+            </mat-form-field>    
+        </div>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Date of birth</mat-label>
+            <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
     
-    </mat-card>
-</div>
+        <mat-form-field appearance="outline">
+            <mat-label>Company name</mat-label>
+            <input formControlName="company" matInput required>
+        </mat-form-field>
+    
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Email address</mat-label>
+            <input matInput placeholder="pat@example.com" formControlName="email" required>
+            <mat-error *ngIf="form.get('email')?.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country" required>
+                <mat-option *ngFor="let country of countries" [value]="country?.name">{{country?.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="state">State</mat-checkbox>
+    </div>
+</form>

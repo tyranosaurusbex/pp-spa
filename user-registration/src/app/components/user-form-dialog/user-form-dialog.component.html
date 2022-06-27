@@ -1,0 +1,7 @@
+<h1 mat-dialog-title align="center">Update user</h1>
+<div mat-dialog-content>
+    <app-user-form></app-user-form>
+</div>
+<div mat-dialog-actions align="center">
+    <button mat-flat-button color="primary" [disabled]="userFormComponent?.form?.invalid" (click)="updateUser()">Update user</button>
+</div>
